@@ -1,5 +1,5 @@
 import type { Message } from 'ai';
-import React, { type RefCallback } from 'react';
+import React, { type RefCallback, type KeyboardEvent } from 'react';
 import { ClientOnly } from 'remix-utils/client-only';
 import { Menu } from '~/components/sidebar/Menu.client';
 import { IconButton } from '~/components/ui/IconButton';
@@ -111,9 +111,9 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                   <textarea
                     ref={textareaRef}
                     className={`w-full pl-4 pt-4 pr-16 focus:outline-none resize-none text-md text-bolt-elements-textPrimary placeholder-bolt-elements-textTertiary bg-transparent`}
-                    onKeyDown={(event) => {
+                    onKeyDown={(event: KeyboardEvent<HTMLTextAreaElement>) => {
                       if (event.key === 'Enter') {
-                        if (event.shiftKey) {
+                        if (event.shiftKey || event.nativeEvent.isComposing) {
                           return;
                         }
 

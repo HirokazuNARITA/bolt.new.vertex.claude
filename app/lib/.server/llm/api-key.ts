@@ -7,3 +7,10 @@ export function getAPIKey(cloudflareEnv: Env) {
    */
   return env.ANTHROPIC_API_KEY || cloudflareEnv.ANTHROPIC_API_KEY;
 }
+
+export function getAnthropicVertexProjectInfo(cloudflareEnv: Env) {
+  return {
+    projectId: env.VERTEX_PROJECT_ID || cloudflareEnv.VERTEX_PROJECT_ID,
+    region: env.VERTEX_REGION || cloudflareEnv.VERTEX_REGION,
+  };
+}
